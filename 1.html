@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{message}}</h2>
+        <div>{{name}}</div>
+        //列表
+        <ul>
+            <li v-for="item in movies">{{item}}</li>
+        </ul>
+    </div>
+
+    <!-- 计算器 -->
+    <div id="jisuanji">
+        <p>当前技术:{{counter}}</p>
+        <!-- <button v-on:click="counter++">+</button>
+        <button v-on:click="counter--">-</button> -->
+        <!-- 当发生点击事件 变复杂后 -->
+        <button v-on:click="add">+</button>
+        <button @click="sub">-</button>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello,jimin',
+                name: 'love u ',
+                movies: ['1', '2', '3']
+                    //app.movies.push("4")
+            }
+
+        })
+        const obj = {
+            counter: 0,
+            message: 'my daer'
+        }
+        const cc = new Vue({
+            el: '#jisuanji',
+            data: obj,
+            methods: {
+                add: function() {
+                    console.log("加1！");
+                    this.counter++;
+                    console.log(obj.message);
+
+                },
+                sub: function() {
+                    console.log("减1！");
+                    this.counter--
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
